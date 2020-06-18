@@ -4,17 +4,18 @@ module Jekyll
   module Mermaidjs
     class Error < StandardError; end
     # Your code goes here...
-    class MermaidChart < Liquid::Block
+    class MermaidChart < Liquid::Tag
             
             def initialize(tag_name, markup, tokens)
                 super
+                @text = text.strip
             end
 
             def render(context)
                 @config = context.registers[:site].config['mermaid']
                 "<script src=\"#{@config['src']}\"></script>"\
                 "<script>mermaid.initialize({startOnLoad:true});</script>"\
-                "<div class=\"mermaid\">#{super}</div>"
+                "<pre><div class=\"mermaid\">#{super}</div></pre>"
         end
   end
 end
