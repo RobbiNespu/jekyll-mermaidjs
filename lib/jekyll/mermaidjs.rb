@@ -15,7 +15,7 @@ module Jekyll
                 @config = context.registers[:site].config['mermaid']
                 "<script src=\"#{@config['src']}\"></script>"\
                 "<script>mermaid.initialize({startOnLoad:true});</script>"\
-                "<pre><div class=\"mermaid\">#{super}</div></pre>"
+                "<pre><div class=\"mermaid\" markdown=\"0\">#{super}</div></pre>"
         end
   end
 end
